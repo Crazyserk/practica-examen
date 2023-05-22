@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <script type="text/javascript">
+        function cambiar() {
+            var boton = document.getElementsByTagName("input")[0];
+            var tittle = document.getElementById("titulo");
+            var body = document.getElementsByTagName("Body")[0];
+
+            tittle.style.border = "solid 2px chocolate";
+            tittle.style.textAlign = "center";
+            tittle.style.boxShadow = "10px 10px 10px 10px";
+
+            boton.value = "Cambiado";
+            boton.style.backgroundColor = "white";
+
+            body.style.backgroundColor = "black";
+            body.style.color = "white";
+            document.getElementById("duracion");
+            innerText = 128;
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="titulo">
+        Desarrollo de Aplicaciones <br />
+        Multiplataforma/Web
+    </h1>
+    <h2 id="modulo">Módulo: Lenguaje de Marcas</h2>
+    <h2>Duración <span id="duracion">129 </span> horas</h2>
+    <input type="button" value="Cambiar" onclick="cambiar()" />
+</body>
+
+</html>

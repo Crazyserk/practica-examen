@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ecuación 2º Grado </title>
+</head>
+
+<body>
+    <h1> Ecuación de Segundo Grado. </h1>
+    <label> Valor de a: </label>
+    <input type="text" id="a"><br><br>
+    <label>Valor de b:</label>
+    <input type="text" id="b"><br><br>
+    <label>Valor de c:</label>
+    <input type="text" id="c"><br><br>
+    <button onclick="resolverEcuacion()">Resolver</button><br><br>
+    <div id="output"></div>
+</body>
+
+
+<script>
+    /** Implementamos la funcion de "resolverEcuacion que hemos implementado en el body y a continuación, insertamos los 
+         tres valores para la ecuación." */
+    function resolverEcuacion() {
+        var a = document.getElementById("a").value;
+        var b = document.getElementById("b").value;
+        var c = document.getElementById("c").value;
+        //Implementamos la función del discriminante, que determinará si las soluciones son reales o no.
+        var discriminante = (b * b) - (4 * a * c);
+        if (discriminante < 0) {
+            document.getElementById("output").innerHTML = "La ecuación no tiene soluciones reales."
+        } else if (discriminante == 0) {
+            var x = (-b) / (2 * a);
+            document.getElementById("output").innerHTML = "La solución es x=" + x;
+        } else {
+            var x1 = (-b + Math.sqrt(discriminante)) / (2 * a);
+            var x2 = (-b - Math.sqrt(discriminante)) / (2 * a);
+            document.getElementById("output").innerHTML = "Las soluciones son x1=" + x1 + " y x2=" + x2;
+        }
+        /* Implementamos el bucle cuando es menor que 0 el discriminante no tiene soluciones,
+         si es positivo tendrá dos soluciones (x1,x2)*/
+
+        // Implementamos una frase para decir las soluciones de la ecuación realizada.
+    }
+
+</script>
+
+</html>

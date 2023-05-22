@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Formulario</title>
+
+    <style type="text/css">
+        body {
+            font-family: arial, helvetica;
+        }
+
+        form {
+            width: 600px;
+            margin: 20px auto 0 auto;
+        }
+
+        label {
+            float: left;
+            width: 200px;
+            font-weight: bold;
+        }
+
+        label[for="registro_condiciones"] {
+            float: none;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea {
+            width: 360px;
+        }
+
+        input[type="checkbox"] {
+            margin-left: 200px;
+        }
+
+        input[type="submit"] {
+            margin: 20px 0 0 200px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="POST" id="registro">
+        <fieldset>
+            <legend>Registro</legend>
+            <label for="registro_nombre">
+                Nombre:
+            </label>
+            <input type="text" name="nombre" id="registro_nombre" required />
+
+            <label for="registro_apellidos">
+                Apellido:
+            </label>
+            <input type="text" name="apellido" id="registro_apellido" />
+
+            <label for="registro_email">
+                Email:</label>
+            <input type="email" name="email" id="registro_email" required value="" />
+
+            <label for="registro_password">
+                Password:
+            </label>
+            <input type="password" name="password" id="registro_password" />
+
+            <label for="registro_comentarios">
+                Comentarios:
+            </label>
+            <textarea name="comentarios" id="registro_comentarios" rows="5" placeholder="Escriba su mensaje"
+                maxlength="50" required>
+            </textarea>
+
+            <input type="checkbox" name="condiciones" id="registro_condiciones" value="1" />
+
+            <label for="registro_condiciones">
+                Acepto las condiciones del servicio.</label>
+
+            <input type="submit" value="Enviar" />
+        </fieldset>
+    </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var form = document.getElementById("registro");
+            form.addEventListener("submit", function (event) {
+                var nombre = document.getElementById("registro_nombre").value;
+                var comentarios = document.getElementById("registro_comentarios").value;
+                var password = document.getElementById("registro_password").value;
+                var condiciones = document.getElementById("registro_condiciones").checked;
+
+                if (nombre === "") {
+                    alert("Por favor ingrese su nombre.");
+                    event.preventDefault();
+                }
+
+                if (comentarios.length > 50) {
+                    ("Los comentarios no deben exceder los 50 caracteres.");
+                    event.preventDefault();
+                }
+
+                var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
+                if (password === "" || !passwordPattern.test(password)) {
+                    alert("La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, una minúscula y una mayúscula.");
+                    event.preventDefault();
+                }
+
+                if (!condiciones) {
+                    alert("Debe aceptar las condiciones del servicio.");
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays</title>
+</head>
+
+<body>
+  <script>
+    //Indicamos las variables con var.
+    var nombres = [];
+    var notas = [];
+
+    //Creamos el bucle para el nombre y nota de cada alumno.
+    for (var i = 0; i < 5; i++) {
+      var nombre = prompt(" Introduzca el nombre del alumno ");
+      var nota = parseInt(prompt(" Introduzca la nota del alumno correspondiente "));
+      //Con esta función, podemos implementar cada nombre y nota.
+      nombres.push(nombre);
+      notas.push(nota);
+    }
+
+    //Creamos la variable de los aprobados y suspensos.
+    var numAprobado = 0;
+    var numSuspenso = 0;
+
+    // Da vueltas en el siguiente bucle para ver si el alumno está aprobado si la nota es > a 5 o suspenso si la nota es
+    // < 5.
+    for (var i = 0; i < notas.length; i++) {
+      var message = nombres[i] + ' ha sacado un ' + notas[i];
+      if (notas[i] >= 5) {
+        message += ' APROBADO! ';
+        numAprobado++;
+      } else {
+        message += ' SUSPENSO!';
+        numSuspenso++;
+      }
+
+      //Crea un nuevo elemento para agregar el mensaje al cuerpo de nuestro HTML
+      var para = document.createElement('p');
+      para.textContent = message;
+      document.body.appendChild(para);
+    }
+
+    // Con esta función, mostramos el número de aprobados y suspensos de cada alumno al final del documento.
+    var total = nombres.length;
+    var estadisticas = document.createElement('p');
+    estadisticas.textContent = 'Hay ' + numAprobado + ' aprobados y hay ' + numSuspenso + ' suspensos de un total de ' + total + ' alumnos.';
+    document.body.appendChild(estadisticas);
+  </script>
+
+</body>
+
+</html>
